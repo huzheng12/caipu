@@ -1,9 +1,12 @@
 {
   "pages": [
+    "pages/home/main",
+    "pages/nav/main",
+    "pages/navTwo/main",
     "pages/counter/main",
     "pages/index/main",
     "pages/logs/main",
-    "pages/home/main",
+
     "pages/login/main"
   ],
   "window": {
@@ -17,8 +20,7 @@
     "backgroundColor": "#fafafa",
     "selectedColor": "#333",
     "borderStyle": "white",
-    "list": [
-      {
+    "list": [{
         "text": "首页",
         "pagePath": "pages/index/main",
         "iconPath": "static/tabs/homeoff.png",
@@ -43,8 +45,7 @@
         "selectedIconPath": "static/tabs/mineon.png"
       }
     ],
-    "items": [
-      {
+    "items": [{
         "name": "首页",
         "pagePath": "pages/index/main",
         "icon": "static/tabs/homeoff.png",

@@ -1,5 +1,19 @@
 <template>
   <div>
-    <h2>2222222222</h2>
+    <div>
+
+      <ul v-for="(cai,i) in caipu">
+        <li>{{cai.name}}</li>
+      </ul>
+
+    </div>
   </div>
 </template>
+<script>
+  export default {
+    props: ['caipu'],
+    mounted() {
+      console.log(this.props)
+    },
+  }
+</script>

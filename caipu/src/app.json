@@ -1,10 +1,10 @@
 {
   "pages": [
+    "pages/index/main",
     "pages/home/main",
     "pages/nav/main",
     "pages/navTwo/main",
     "pages/counter/main",
-    "pages/index/main",
     "pages/logs/main",
     "pages/login/main"
   ],

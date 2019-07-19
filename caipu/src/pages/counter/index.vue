@@ -1,10 +1,123 @@
 <template>
-  <div>
-    <a href="pages/login/main">a sdfsdfasdf</a>
+  <div @click="clickHandle">
+
+    <div class="userinfo" @click="bindViewTap">
+      <!-- <img class="userinfo-avatar" v-if="userInfo.avatarUrl" :src="userInfo.avatarUrl" background-size="cover" /> -->
+      <img class="userinfo-avatar" src="/static/images/user.png" background-size="cover" />
+
+      <div class="userinfo-nickname">
+
+        <a href="../login/main" class="but">前往登录发手机验证码</a>
+      </div>
+    </div>
+
+    <div class="usermotto">
+      <div class="user-motto">
+        <card :text="motto"></card>
+      </div>
+    </div>
   </div>
 </template>
-<script>
-  export default {
 
+<script>
+  import card from '@/components/card'
+
+  export default {
+    data() {
+      return {
+        userInfo: {
+          nickName: 'mpvue',
+          avatarUrl: 'http://mpvue.com/assets/logo.png'
+        }
+      }
+    },
+
+    components: {
+      card
+    },
+
+    methods: {
+      bindViewTap() {
+        const url = '../logs/main'
+        if (mpvuePlatform === 'wx') {
+          mpvue.switchTab({ url })
+        } else {
+          mpvue.navigateTo({ url })
+        }
+      },
+      clickHandle(ev) {
+        console.log('clickHandle:', ev)
+        // throw {message: 'custom test'}
+      }
+    },
+
+    created() {
+      // let app = getApp()
+    }
   }
 </script>
+
+<style scoped>
+  .userinfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .userinfo-avatar {
+    width: 128rpx;
+    height: 128rpx;
+    margin: 20rpx;
+    border-radius: 50%;
+  }
+
+  .userinfo-nickname {
+    color: #aaa;
+  }
+
+  .usermotto {
+    margin-top: 150px;
+  }
+
+  .form-control {
+    display: block;
+    padding: 0 12px;
+    margin-bottom: 5px;
+    border: 1px solid #ccc;
+  }
+
+  .all {
+    width: 7.5rem;
+    height: 1rem;
+    background-color: blue;
+  }
+
+  .all:after {
+    display: block;
+    content: '';
+    clear: both;
+  }
+
+  .left {
+    float: left;
+    width: 3rem;
+    height: 1rem;
+    background-color: red;
+  }
+
+  .right {
+    float: left;
+    width: 4.5rem;
+    height: 1rem;
+    background-color: green;
+  }
+
+  .but {
+    display: block;
+    text-align: center;
+    line-height: 30px;
+    width: 100vw;
+    background-color: #6ff;
+    border-radius: 15px;
+  }
+</style>

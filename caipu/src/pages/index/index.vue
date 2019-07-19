@@ -14,7 +14,7 @@
       <p>精品好菜</p>
       <view class="cai">
         <block v-for="(item,i) in list" :key="i">
-          <a class="singel" :href="'../nav/main?id='+item.id">
+          <a class="singel" :href="'../navTwo/main?id='+item.id">
             <img :src="item.img" alt="">
             <p>{{item.title}}</p>
             <p class="jianjie">{{item.imtro}}</p>

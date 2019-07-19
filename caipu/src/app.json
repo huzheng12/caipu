@@ -1,14 +1,10 @@
 {
   "pages": [
-<<<<<<< HEAD
-=======
     "pages/home/main",
     "pages/nav/main",
     "pages/navTwo/main",
     "pages/counter/main",
->>>>>>> 349d0ed82ba09a56ec090e2c37c44966fbec2a3c
     "pages/index/main",
-    "pages/counter/main",
     "pages/logs/main",
     "pages/login/main"
   ],

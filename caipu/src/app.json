@@ -1,10 +1,10 @@
 {
   "pages": [
+    "pages/index/main",
     "pages/home/main",
     "pages/nav/main",
     "pages/navTwo/main",
     "pages/counter/main",
-    "pages/index/main",
     "pages/logs/main",
     "pages/login/main"
   ],
@@ -26,7 +26,7 @@
         "selectedIconPath": "static/tabs/homeon.png"
       },
       {
-        "text": "订单",
+        "text": "搜索",
         "pagePath": "pages/logs/main",
         "iconPath": "static/tabs/cartoff.png",
         "selectedIconPath": "static/tabs/carton.png"
@@ -51,7 +51,7 @@
         "activeIcon": "static/tabs/homeon.png"
       },
       {
-        "name": "订单",
+        "name": "搜索",
         "pagePath": "pages/logs/main",
         "icon": "static/tabs/cartoff.png",
         "activeIcon": "static/tabs/carton.png"

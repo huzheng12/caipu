@@ -1,61 +1,96 @@
 <template>
   <div>
-      <swiper v-if="imgUrls.length > 0" indidator-dots="imgUrls.length > 1" >
-      <block v-for="(item, index) in imgUrls" :key="index" >
-        <swiper-item>
-          <image :src="item" mode="scaleToFill"></image>
-        </swiper-item>
-      </block>
-    </swiper>
+    <div class="search">
+      <input type="text" placeholder="搜索" v-model="keyword">
+      <span @click="search">搜索</span>
+    </div>
 
-    <ul class="container log-list">
-      <li v-for="(log, index) in logs" :class="{ red: aa }" :key="index" class="log-item">
-        <card :text="(index + 1) + ' . ' + log"></card>
-      </li>
-    </ul>
+
+
+    <div v-for="(a,i) in arr" :key="i" class="nav">
+      <img :src="a.albums[0]" alt="">
+      <a :href="'../navTwo/main?id='+a.id" class="name">
+        {{a.title}}
+      </a>
+      <p>
+        <span>功效:&emsp;</span>{{a.tags}}
+      </p>
+
+      <p>
+        <span>简介:&emsp;</span> {{a.imtro}}
+      </p>
+    </div>
+
   </div>
 </template>
-
 <script>
-import { formatTime } from '@/utils/index'
-import card from '@/components/card'
-
-export default {
-  components: {
-    card
-  },
-
-  data () {
-    return {
-      logs: [],
-      imgUrls: [
-        'http://mss.sankuai.com/v1/mss_51a7233366a4427fa6132a6ce72dbe54/newsPicture/05558951-de60-49fb-b674-dd906c8897a6',
-        'http://mss.sankuai.com/v1/mss_51a7233366a4427fa6132a6ce72dbe54/coursePicture/0fbcfdf7-0040-4692-8f84-78bb21f3395d',
-        'http://mss.sankuai.com/v1/mss_51a7233366a4427fa6132a6ce72dbe54/management-school-picture/7683b32e-4e44-4b2f-9c03-c21f34320870'
-      ]
-    }
-  },
-
-  created () {
-    let logs
-    if (mpvuePlatform === 'my') {
-      logs = mpvue.getStorageSync({key: 'logs'}).data || []
-    } else {
-      logs = mpvue.getStorageSync('logs') || []
-    }
-    this.logs = logs.map(log => formatTime(new Date(log)))
+  export default {
+    data() {
+      return {
+        keyword: "",
+        arr: []
+      }
+    },
+    methods: {
+      search() {
+        console.log(this.keyword)
+        wx.request({
+          url: "https://apis.juhe.cn/cook/query?key=c3d942c200256073ff822ca1dd431f16&menu=" + this.keyword, //仅为示例，并非真实的接口地址
+          data: {
+            x: '',
+            y: ''
+          },
+          header: {
+            'content-type': 'application/json' // 默认值
+          },
+          success: (res) => {
+            this.arr = res.data.result.data
+          }
+        })
+      }
+    },
   }
-}
 </script>
 
 <style>
-.log-list {
-  display: flex;
-  flex-direction: column;
-  padding: 40rpx;
-}
+  .search {
+    display: flex;
+    justify-content: space-evenly;
+  }
 
-.log-item {
-  margin: 10rpx;
-}
+  input {
+    width: 80%;
+    border: 1px solid #e0e0e0;
+    border-radius: 15px;
+    box-sizing: border-box;
+    padding-left: 10px;
+  }
+
+  .nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: 1px dashed #2b2b2b;
+    padding-bottom: 10px;
+    margin: 16px 0;
+  }
+
+  .name {
+    font-size: 26px;
+    font-family: 'Courier New', Courier, monospace;
+
+  }
+
+  .nav p {
+    font-size: 20px;
+    font-weight: 300;
+    color: #2b2b2b;
+    text-align: left;
+  }
+
+  .nav p>span {
+    font-size: 26px;
+    font-weight: 600;
+    color: #000000;
+  }
 </style>

@@ -6,7 +6,6 @@
     "pages/counter/main",
     "pages/index/main",
     "pages/logs/main",
-
     "pages/login/main"
   ],
   "window": {

@@ -13,11 +13,13 @@
 
 
             <div class="right">
-                <navigator>
-                    <span v-for="(list,k) in caipuLIst[num].list" :key="k" class="list">
+
+                <span v-for="(list,k) in caipuLIst[num].list" :key="k" class="list">
+                    <a :href="'../nav/main?id='+list.id">
                         {{list.name}}
-                    </span>
-                </navigator>
+                    </a>
+                </span>
+
 
 
 
@@ -114,7 +116,7 @@
 
 
 
-        width: 33%;
+
         line-height: 50px;
         text-align: center;
     }

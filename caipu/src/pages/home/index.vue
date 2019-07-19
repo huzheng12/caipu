@@ -18,6 +18,7 @@
                     <a :href="'../nav/main?id='+list.id">
                         {{list.name}}
                     </a>
+
                 </span>
 
 
@@ -55,7 +56,7 @@
                 },
                 success(res) {
                     that.caipuLIst = res.data.result
-                    console.log(that.caipuLIst)
+                    console.log(that.caipuLIst, 222)
                 }
             })
         },
@@ -65,7 +66,7 @@
             }
         },
         mounted() {
-            console.log(this.caipuLIst[this.num])
+            console.log(this.caipuLIst[this.num], 1111)
         },
     }
 </script>
@@ -115,15 +116,15 @@
     .list {
 
 
-
-
-        line-height: 50px;
+        display: inline-block;
+        width: 33%;
+        line-height: 40px;
         text-align: center;
     }
 
     .list-chi {
-        display: inline-block;
-        width: 33%;
+        display: block;
+        width: 45%;
         background-color: #fff;
     }
 </style>
